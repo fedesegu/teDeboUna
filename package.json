@@ -1,0 +1,19 @@
+{
+  "name": "te-debo-una",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "passport": "^0.7.0"
+  }
+}
