@@ -1,15 +1,19 @@
-import { userManager } from "../DAL/daos/mongoDB/usersManagerDB.js";
-import { hashData } from "../utils.js";
+import { usersManager } from "../DAL/daos/mongoDB/usersManagerDB.js";
+import { hashData } from "../utils/utils.js";
 //import { UsersResponse } from "../DAL/dtos/users-response.dto.js";
 
+export const findAll = () => {
+    const user = usersManager.findAll();
+    return user;
+};
 
 export const findById = (id) => {
-    const user = userManager.findById(id);
+    const user = usersManager.findById(id);
     return user;
 };
 
 export const findByEmail = (id) => {
-    const user = userManager.findByEmail(id);
+    const user = usersManager.findByEmail(id);
     return user;
 };
 

@@ -12,7 +12,7 @@ import cookieParser from 'cookie-parser';
 import config from "../config/config.js";
 import { paginate } from "mongoose-paginate-v2";
 import path from 'path';
-import { oldUsers } from "../controllers/users.controller.js";
+// import { oldUsers } from "../controllers/users.controller.js";
 
 
 
@@ -82,12 +82,12 @@ router.get("/users", passport.authenticate("current", {session:false}), authMidd
     res.render("usersAll", { users: clonedUsers, style: "product" });
 });
 
-router.get("/userOld",  async (req, res) => {
-    const users = await oldUsers();
-    const users1 = JSON.stringify(users);
-    const clonedUsers = users.map(user => Object.assign({}, user._doc));
-    res.render("userOld", { users: clonedUsers, users1: users1, style: "product" });
-});
+// router.get("/userOld",  async (req, res) => {
+//     const users = await oldUsers();
+//     const users1 = JSON.stringify(users);
+//     const clonedUsers = users.map(user => Object.assign({}, user._doc));
+//     res.render("userOld", { users: clonedUsers, users1: users1, style: "product" });
+// });
 
 router.get("/error", (req, res) => {
     res.render("error", {style:"product"});
@@ -179,4 +179,4 @@ router.get("/products/:pid", async (req, res) => {
 //     }
 //     res.render("mockingProducts", {products:products,style:"product"});
 // });
-// export default router;
+export default router;

@@ -1,4 +1,4 @@
-import { findAll, findByEmail, findById, createOne, updateUser, updatePerfilDoc, deleteOneUser, updatePerfilFoto } from "../services/user.service.js";
+import { findAll, findByEmail, findById, createOne } from "../services/user.service.js";
 //import { jwtValidation } from "../middlewares/jwt.middleware.js";
 //import { authMiddleware } from "../middlewares/auth.middleware.js";
 //import { transporter } from "../utils/nodemailer.js"
@@ -34,38 +34,38 @@ export const findAllUsers = async (req, res) => {
     return users
 }
 
-export const oldUsers = async (req, res) => {
-    try {
-        const users = await findAll();
-        const now = new Date();
-        const oldUsersList = [];
-        for (let index = 0; index < users.length; index++) {
-            const element = users[index];
-            const diferenciaEnDias = (now - element.last_connection) / (1000 * 60 * 60 * 24);
-            if (diferenciaEnDias >= 2) {
-                oldUsersList.push(element)
-            }
-        }
-        return oldUsersList;
-    } catch (error) {
-        console.error("OldUsers Error:", error);
-        res.status(500).send("Server internal error");
-    }
-};
+// export const oldUsers = async (req, res) => {
+//     try {
+//         const users = await findAll();
+//         const now = new Date();
+//         const oldUsersList = [];
+//         for (let index = 0; index < users.length; index++) {
+//             const element = users[index];
+//             const diferenciaEnDias = (now - element.last_connection) / (1000 * 60 * 60 * 24);
+//             if (diferenciaEnDias >= 2) {
+//                 oldUsersList.push(element)
+//             }
+//         }
+//         return oldUsersList;
+//     } catch (error) {
+//         console.error("OldUsers Error:", error);
+//         res.status(500).send("Server internal error");
+//     }
+// };
 
-export const deleteUsers = async (req, res) => {
-    const {users} = req.body;
-    for (let index = 0; index < users.length; index++) {
-        const element = users[index];
-        const result = deleteOneUser(element._id);
-        await transporter.sendMail({
-            from: "federicosegu@gmail.com",
-            to: element.email,
-            subject: "Perfil",
-            html: `<bSe ha eliminado su usuario por falta de actividad, por favor registrese nuevamente.</b>`,
-        });
-    }
-};
+// export const deleteUsers = async (req, res) => {
+//     const {users} = req.body;
+//     for (let index = 0; index < users.length; index++) {
+//         const element = users[index];
+//         const result = deleteOneUser(element._id);
+//         await transporter.sendMail({
+//             from: "federicosegu@gmail.com",
+//             to: element.email,
+//             subject: "Perfil",
+//             html: `<bSe ha eliminado su usuario por falta de actividad, por favor registrese nuevamente.</b>`,
+//         });
+//     }
+// };
 
 export const createUser =  async (req, res) => {
     const { name, lastName, email, password } = req.body;

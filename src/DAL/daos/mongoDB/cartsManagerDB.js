@@ -113,4 +113,4 @@ class CartsManager {
     
 };
 
-export const cartManager = new CartsManager();
+export const cartsManager = new CartsManager();

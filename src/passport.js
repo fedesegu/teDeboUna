@@ -1,7 +1,7 @@
 import passport from "passport";
-import { logger } from "./logger.js"
+import { logger } from "./utils/logger.js"
 import { usersManager} from "../src/DAL/daos/mongoDB/usersManagerDB.js";
-import { cartManager } from "../src/DAL/daos/mongoDB/cartsManagerDB.js"
+import { cartsManager } from "../src/DAL/daos/mongoDB/cartsManagerDB.js"
 import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
@@ -18,11 +18,11 @@ passport.use("signup", new LocalStrategy(
         if (!name || !lastName || !email || !password) {
             return done(null, false, {message: 'All fields are required'});
         }
-        const cart = await cartManager.createOne();
+        const cart = await cartsManager.createOne();
         
         try {
             const hashedPassword = await hashData(password);
-            const createdUser = await userManager.createOne({
+            const createdUser = await usersManager.createOne({
             ...req.body,
             password: hashedPassword,
             cartId : cart._id,
@@ -77,7 +77,7 @@ passport.use("google",
                     return done(null, userDB);
                     } 
                 
-                const cart = await cartManager.createOne();
+                const cart = await cartsManager.createOne();
 
                 const infoUser = {
                     name: profile._json.given_name,

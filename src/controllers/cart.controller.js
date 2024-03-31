@@ -1,13 +1,13 @@
 import { findAll, findCById, createOne, addProduct, deleteOneProduct, deleteAll, updateCart } from "../services/cart.service.js";
 import { findById } from "../services/product.service.js";
-import { cartManager } from "../DAL/daos/mongoDB/cartsManagerDB.js";
+import { cartsManager } from "../DAL/daos/mongoDB/cartsManagerDB.js";
 import { createOneT } from "../services/ticket.service.js";
 import { generateUniqueCode } from "../utils/utils.js";
 import jwt from "jsonwebtoken";
 import config from "../config/config.js" 
 import CustomError from "../errors/error.generate.js";
 import { ErrorMessages, ErrorName } from "../errors/errors.enum.js";
-i//mport {logger} from "../logger.js"
+//import {logger} from "../logger.js"
 
 
 
@@ -92,7 +92,7 @@ export const updateCartQuantity = async (req, res) => {
     const { pid , quantity } = req.body;
     const { cid } = req.params;
     try {
-        const response = await Cart.update(cid , pid , quantity);
+        const response = await cartsManager.update(cid , pid , quantity);
         res.status(200).json({ message: "cart update", cart: response });
     } catch (error){
         logger.error(error)
@@ -105,7 +105,7 @@ export const cartBuy = async (req,res) => {
         const { cid } = req.params;
         console.log("cid ticket", cid);
         const secretKeyJwt = config.secret_jwt;        
-        const cart = await cartManager.findCById(cid);  
+        const cart = await cartsManager.findCById(cid);  
         console.log("cart ticket",cart);
         const products = cart.products;
         console.log("product ticket",products);

@@ -1,10 +1,12 @@
 import  express  from 'express';
 import productRouter from './routes/product.router.js'
 import cartRouter from './routes/cart.router.js'
+import viewsRouter from './routes/views.router.js'
+import sessionRouter from './routes/session.router.js'
 //import chatsRouter from './routes/chats.router.js'
 //import loggerRouter from "./routes/logger.router.js";
 //import mockingRouter from "./routes/mockingProducts.router.js"
-//import cookieRouter from './routes/cookie.router.js'
+import cookieRouter from './routes/cookie.router.js'
 import { __dirname } from "./utils/utils.js"
 import { Server } from "socket.io";
 import { engine } from "express-handlebars";
@@ -19,8 +21,8 @@ import passport from "passport";
 import fileStore from "session-file-store";
 import { logger } from "./utils/logger.js"
 import  config  from "./config/config.js";
-import { authMiddleware } from './middlewares/auth.middleware.js';
-import { errorMiddleware } from './middlewares/errorMiddleware.js';
+//import { authMiddleware } from './middlewares/auth.middleware.js';
+import { errorMiddleware } from './middleware/error.middlware.js';
 const FileStore = fileStore(session);
 
 const app = express();
