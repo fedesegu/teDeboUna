@@ -1,5 +1,5 @@
-import { cartsModel } from "../../../DB/Models/carts.model.js";
-import { productsManager } from "../MongoDB/productManagerDB.js";
+import { cartsModel } from "../../../DB/models/carts.model.js";
+import { productsManager } from "../mongoDB/productManagerDB.js";
 
 class CartsManager {
     async findAll() {

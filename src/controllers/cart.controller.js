@@ -1,13 +1,13 @@
-import { findAll, findCById, createOne, addProduct, deleteOneProduct, deleteAll, updateCart } from "../service/cart.service.js";
-import { findById } from "../service/product.service.js";
-import { cartManager } from "../DAL/daos/MongoDB/cartsManagerDB.js";
-import { createOneT } from "../service/ticket.service.js";
-import { generateUniqueCode } from "../utils.js";
+import { findAll, findCById, createOne, addProduct, deleteOneProduct, deleteAll, updateCart } from "../services/cart.service.js";
+import { findById } from "../services/product.service.js";
+import { cartManager } from "../DAL/daos/mongoDB/cartsManagerDB.js";
+import { createOneT } from "../services/ticket.service.js";
+import { generateUniqueCode } from "../utils/utils.js";
 import jwt from "jsonwebtoken";
 import config from "../config/config.js" 
 import CustomError from "../errors/error.generate.js";
-import { ErrorMessages, ErrorName } from "../errors/error.enum.js";
-import {logger} from "../logger.js"
+import { ErrorMessages, ErrorName } from "../errors/errors.enum.js";
+i//mport {logger} from "../logger.js"
 
 
 

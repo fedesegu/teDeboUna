@@ -1,4 +1,4 @@
-import { productsModel } from "../../../DB/Models/products.model.js";
+import { productsModel } from "../../../DB/models/products.model.js";
 
 class ProductsManager {
     async findAll(obj) {

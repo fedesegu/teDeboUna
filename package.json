@@ -5,6 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
     "test": "nodemon src/app.js"
   },
   "keywords": [],
@@ -15,7 +16,9 @@
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
     "mongoose": "^8.1.0",
-    "passport": "^0.7.0"
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
   }
 }
