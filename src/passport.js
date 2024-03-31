@@ -1,11 +1,11 @@
 import passport from "passport";
 import { logger } from "./logger.js"
-import { usersManager} from "../src/DAL/daos/MongoDB/usersManagerDB.js";
-import { cartManager } from "../src/DAL/daos/MongoDB/cartsManagerDB.js"
+import { usersManager} from "../src/DAL/daos/mongoDB/usersManagerDB.js";
+import { cartManager } from "../src/DAL/daos/mongoDB/cartsManagerDB.js"
 import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import { hashData, compareData } from "./utils.js";
+import { hashData, compareData } from "./utils/utils.js";
 import UsersResponse from "./DAL/dtos/users-response.dto.js";
 
 import config from "../src/config/config.js";

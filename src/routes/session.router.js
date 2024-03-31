@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { usersManager } from "../DAL/daos/mongoDB/usersManagerDB.js";
-import { hashData, compareData } from "../utils.js";
+import { hashData, compareData } from "../utils/utils.js";
 import { generateToken } from "../utils.js";
 
 import passport from "passport";

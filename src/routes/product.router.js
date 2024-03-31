@@ -1,6 +1,6 @@
 import {Router} from 'express'
-import { __dirname } from "../utils.js"
-import { findProductById, findAllProduct, createOneProduc, deleteOneProdAll, updateProducts } from '../controllers/products.controller.js';
+import { __dirname } from "../utils/utils.js"
+import { findProductById, findAllProduct, createOneProduc, deleteOneProdAll, updateProducts } from '../controllers/product.controller.js';
 //import { authMiddleware } from '../middlewares/auth.middleware.js';
 
 const router = Router();

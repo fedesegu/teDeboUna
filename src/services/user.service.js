@@ -1,8 +1,6 @@
-import { userManager } from "../DAL/daos/MongoDB/usersManagerDB.js";
+import { userManager } from "../DAL/daos/mongoDB/usersManagerDB.js";
 import { hashData } from "../utils.js";
 //import { UsersResponse } from "../DAL/dtos/users-response.dto.js";
-
-
 
 
 export const findById = (id) => {
