@@ -25,23 +25,24 @@ router.get("/home", passport.authenticate('current', { session: false }), async 
     }
     // console.log(req.user);
     try {
-        const products = await productsManager.findAll(req.query);
-        const { limit  } = req.params;
-        const productsFinal = products.info.results;
-        const clonedProducts = productsFinal.map(product => Object.assign({}, product._doc));
-        const result = clonedProducts;
-        const {pages, nextPage, prevPage}  = products.info;
-        const sort = req.query.orders;
-        const cart = await cartsManager.findCById(req.user.cartId)
-        const foto = req.user.avatar.map(item => item.reference);
-        const avatar = foto.map(foto => path.basename(foto));
+        //const products = await productsManager.findAll(req.query);
+        // const { limit  } = req.params;
+        // const productsFinal = products.info.results;
+        // const clonedProducts = productsFinal.map(product => Object.assign({}, product._doc));
+        // const result = clonedProducts;
+        // const {pages, nextPage, prevPage}  = products.info;
+        // const sort = req.query.orders;
+        // const cart = await cartsManager.findCById(req.user.cartId)
+        // const foto = req.user.avatar.map(item => item.reference);
+        // const avatar = foto.map(foto => path.basename(foto));
         // console.log(clonedProducts, "probando");
-        res.render("home",  { avatar : avatar, cartId: req.user.cartId, uid: req.user.id, quantity: cart.totalProducts, user: req.user, name: req.user.name, email : req.user.email, products: result, sort: sort, pages : pages, limit:limit, nextPage: nextPage,  prevPage: prevPage, style: "product" } );
+        res.render("home",  { style: "product" } );
     } catch (error) {
         // console.error(error);
         res.status(500).send("Error interno del servidor");
     }
 });
+//avatar : avatar, cartId: req.user.cartId, uid: req.user.id, quantity: cart.totalProducts, user: req.user, name: req.user.name, email : req.user.email, products: result, sort: sort, pages : pages, limit:limit, nextPage: nextPage,  prevPage: prevPage
 
 
 router.get("/login", (req, res) => {

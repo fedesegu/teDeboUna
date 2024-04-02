@@ -2,7 +2,7 @@ import passport from "passport";
 import { logger } from "./utils/logger.js"
 import { usersManager} from "../src/DAL/daos/mongoDB/usersManagerDB.js";
 import { cartsManager } from "../src/DAL/daos/mongoDB/cartsManagerDB.js"
-import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
+//import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { hashData, compareData } from "./utils/utils.js";
@@ -96,35 +96,35 @@ passport.use("google",
 const fromCookies = (req) => {
     return req.cookies.token;
 }
-passport.use('current', new JWTStrategy({
-    jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
-    secretOrKey: secretKeyJwt,
-}, async (jwt_payload, done) => {
-    try {
-        const user = await usersManager.findByEmail(jwt_payload.mail);
-        if (!user) {
-            return done(null, false, { message: 'User not founded' });
-        }
-        const userDTO =  new UsersResponse(user)
-        return done(null, userDTO);}
-            catch (error) {
-                return error
-            }
-}));
+// passport.use('current', new JWTStrategy({
+//     jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
+//     secretOrKey: secretKeyJwt,
+// }, async (jwt_payload, done) => {
+//     try {
+//         const user = await usersManager.findByEmail(jwt_payload.mail);
+//         if (!user) {
+//             return done(null, false, { message: 'User not founded' });
+//         }
+//         const userDTO =  new UsersResponse(user)
+//         return done(null, userDTO);}
+//             catch (error) {
+//                 return error
+//             }
+// }));
 
-passport.use(
-    "jwt",
-    new JWTStrategy(
-    {
-        //jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
-        secretOrKey: secretKeyJwt,
-    },
-    async function (jwt_payload, done) {
-       done(null, jwt_payload);
-    }
-    )
-);
+// passport.use(
+//     "jwt",
+//     new JWTStrategy(
+//     {
+//         //jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//         jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
+//         secretOrKey: secretKeyJwt,
+//     },
+//     async function (jwt_payload, done) {
+//        done(null, jwt_payload);
+//     }
+//     )
+// );
 
 passport.serializeUser((user, done) => {
     done(null, user._id);
