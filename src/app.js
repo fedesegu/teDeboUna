@@ -26,11 +26,12 @@ import { errorMiddleware } from './middleware/error.middlware.js';
 const FileStore = fileStore(session);
 
 const app = express();
-const URI = config.mongo_uri;
+//const URI = config.mongo_uri;
 app.use(
     session({
         store: new MongoStore({
-            mongoUrl: URI,
+            mongoUrl: "mongodb+srv://federicosegu:Abeyp231@cluster0.gjwkb4d.mongodb.net/teDeboUna?retryWrites=true&w=majority&appName=Cluster0",
+            
         }),
         secret: "secretSession",
         cookie: { maxAge: 60000 },
